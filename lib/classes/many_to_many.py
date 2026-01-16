@@ -37,6 +37,30 @@ class Magazine:
         self.name = name
         self.category = category
 
+    @property
+    def name(self):
+        return self._name
+
+    @name.setter
+    def name(self, value):
+        if not isinstance(value, str) or not (2 <= len(value) <= 16):
+            if hasattr(self, '_name'):
+                return
+            return
+        self._name = value
+
+    @property
+    def category(self):
+        return self._category
+
+    @category.setter
+    def category(self, value):
+        if not isinstance(value, str) or len(value) == 0:
+            if hasattr(self, '_category'):
+                return
+            return
+        self._category = value
+
     def articles(self):
         pass
 

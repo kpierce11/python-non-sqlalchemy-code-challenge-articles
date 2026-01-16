@@ -1,9 +1,48 @@
 class Article:
+    all = []
+
     def __init__(self, author, magazine, title):
         self.author = author
         self.magazine = magazine
         self.title = title
-        
+        Article.all.append(self)
+
+    @property
+    def title(self):
+        return self._title
+
+    @title.setter
+    def title(self, value):
+        if hasattr(self, '_title'):
+            return
+        if not isinstance(value, str) or not (5 <= len(value) <= 50):
+            return
+        self._title = value
+
+    @property
+    def author(self):
+        return self._author
+
+    @author.setter
+    def author(self, value):
+        if not isinstance(value, Author):
+            if hasattr(self, '_author'):
+                return
+            return
+        self._author = value
+
+    @property
+    def magazine(self):
+        return self._magazine
+
+    @magazine.setter
+    def magazine(self, value):
+        if not isinstance(value, Magazine):
+            if hasattr(self, '_magazine'):
+                return
+            return
+        self._magazine = value
+
 class Author:
     def __init__(self, name):
         self.name = name

@@ -60,10 +60,10 @@ class Author:
         self._name = value
 
     def articles(self):
-        pass
+        return [article for article in Article.all if article.author is self]
 
     def magazines(self):
-        pass
+        return list(set(article.magazine for article in self.articles()))
 
     def add_article(self, magazine, title):
         pass
